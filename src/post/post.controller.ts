@@ -9,32 +9,29 @@ import {
   Put,
 } from '@nestjs/common';
 import { CreatePostDTO, EditPostDTO } from './dto';
-
-const losPosts = [
-  { id: 1, content: 'texto bonito', category: 'TEXT' },
-  { id: 2, content: 'otro texto', category: 'BONITO' },
-];
+import { PostService } from './post.service';
 
 @Controller('post')
 export class PostController {
+  constructor(private readonly postService:PostService){}
   @Get()
   getAll() {
-    return losPosts;
+    return this.postService.getMany()
   }
   @Get(':id')
   getOne(@Param('id', ParseIntPipe) id: number) {
-    return losPosts.filter((el) => el.id == id);
+    return this.postService.getOne(id)
   }
   @Post()
   postOne(@Body() body: CreatePostDTO) {
-    return [...losPosts, body];
+    return this.postService.createOne(body)
   }
   @Put(':id')
   editOne(@Body() body: EditPostDTO, @Param('id', ParseIntPipe) id: number) {
-    return { ...losPosts.filter((el) => el.id == id)[0], ...body };
+    return this.postService.editOne(id,body)
   }
   @Delete(':id')
   deleteOne(@Param('id', ParseIntPipe) id: number) {
-    return losPosts.filter((el) => el.id != id);
+    return this.postService.deleteOne(id)
   }
 }

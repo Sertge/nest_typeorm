@@ -1,5 +1,5 @@
-export enum PostCategory{
+export enum PostCategory {
   'TEXT',
   'BONITO',
-  'ARRAY'
+  'ARRAY',
 }

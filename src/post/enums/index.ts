@@ -1,1 +1,1 @@
-export * from './category-post-enum'
+export * from './category-post-enum';

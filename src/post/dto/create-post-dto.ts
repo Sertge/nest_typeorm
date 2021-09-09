@@ -1,6 +1,10 @@
-import { PostCategory } from "../enums";
+import { PostCategory } from '../enums';
+import { IsNumber, IsString } from 'class-validator';
 export class CreatePostDTO {
-  id:number;
-  content:string;
-  category:PostCategory
+  @IsNumber()
+  id: number;
+  @IsString()
+  content: string;
+  @IsString()
+  category: PostCategory;
 }

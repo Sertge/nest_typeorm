@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreatePostDTO } from './dto';
 
-const losPosts=[{id:1,content:"texto bonito"},{id:2,content:"otro texto"}]
+const losPosts=[{id:1,content:"texto bonito",category:'TEXT'},{id:2,content:"otro texto", category:"BONITO"}]
 
 @Controller('post')
 export class PostController {
@@ -13,7 +14,7 @@ export class PostController {
     return losPosts.filter((el)=>el.id==parseInt(id))
   }
   @Post()
-  postOne(@Body() body:{id: number;content: string;}){
+  postOne(@Body() body:CreatePostDTO){
     return [losPosts,body]
 }
 }

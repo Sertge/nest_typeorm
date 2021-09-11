@@ -1,4 +1,4 @@
-export const EnumToSTring = (_enum:object) =>
+export const EnumToSTring = (_enum: object) =>
   Object.keys(_enum)
-  .map(key=>_enum[key])
-  .filter(value=>typeof value === 'string') as string[]
+    .map((key) => _enum[key])
+    .filter((value) => typeof value === 'string') as string[];

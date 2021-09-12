@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { PostCategory } from '../enums';
 
 @Entity()
 export class Post {
@@ -7,7 +8,7 @@ export class Post {
 
   @Column()
   content: string;
-
-  @Column({ type: 'varchar' })
-  category: string;
+  
+  @CreateDateColumn({type:'timestamp'})
+  createdAt:Date;
 }
